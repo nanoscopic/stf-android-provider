@@ -1,0 +1,10 @@
+#!/bin/bash
+STF_IP=192.168.56.108
+STF_HOST=stf.test
+CUR_IP=192.168.1.2
+node runmod.js provider \
+  --connect-push tcp://$STF_IP:7270 \
+  --connect-sub tcp://$STF_IP:7250 \
+  --public-ip $CUR_IP \
+  --storage-url https://$STF_HOST \
+  --screen-ws-url-pattern "wss://${STF_HOST}/d/$CUR_IP/<%= serial %>/<%= publicPort %>/"
